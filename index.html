@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="description" content="HyperDrop — Game news, reviews and scores. Sign up for free."/>
+<title>HyperDrop — Game News & Reviews</title>
+
+<!-- ============================================================
+     SIGN UP LINK — EDIT HERE
+     Paste your link between the quotes below
+     ============================================================ -->
+<script>
+  var signupLink = "";
+</script>
+<!-- ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+  :root {
+    --bg:       #0b0c0f;
+    --surface:  #13151a;
+    --surface2: #1c1f27;
+    --border:   #252830;
+    --accent:   #f0a500;
+    --text:     #e8eaf0;
+    --muted:    #7a7f91;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .h-display {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; line-height: 1;
+    letter-spacing: -0.5px;
+  }
+  .h-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ════════════════════════════════
+     SIGNUP PAGE
+  ════════════════════════════════ */
+  #page-signup {
+    min-height: 100dvh;
+    display: flex; flex-direction: column;
+  }
+
+  .signup-topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 20px;
+    position: relative; z-index: 2;
+  }
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px; font-weight: 900; color: #fff;
+    letter-spacing: 1px;
+  }
+  .logo span { color: var(--accent); }
+
+  .topbar-link {
+    font-size: 13px; font-weight: 600; color: var(--muted);
+    padding: 8px 0; cursor: pointer;
+  }
+  .topbar-link b { color: var(--accent); }
+
+  .signup-visual {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .signup-visual-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(11,12,15,0.4) 0%, rgba(11,12,15,0.95) 100%),
+      linear-gradient(135deg, #0d1b2a 0%, #1b2838 50%, #0a1628 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(60px); pointer-events: none;
+  }
+  .orb-1 {
+    width: 200px; height: 200px;
+    background: rgba(240,165,0,0.18);
+    top: -60px; left: -40px;
+    animation: orbFloat 8s ease-in-out infinite;
+  }
+  .orb-2 {
+    width: 160px; height: 160px;
+    background: rgba(100,80,220,0.14);
+    bottom: -40px; right: -20px;
+    animation: orbFloat 10s ease-in-out infinite reverse;
+  }
+  @keyframes orbFloat {
+    0%,100% { transform: translate(0,0); }
+    50%      { transform: translate(20px, 15px); }
+  }
+
+  .signup-chips {
+    position: relative; z-index: 1;
+    display: flex; gap: 10px; align-items: center; justify-content: center;
+    padding: 0 16px;
+    flex-wrap: wrap;
+  }
+  .game-chip {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 8px 12px;
+    display: flex; align-items: center; gap: 8px;
+    backdrop-filter: blur(8px);
+    animation: chipFade 0.5s ease both;
+  }
+  .game-chip:nth-child(1){animation-delay:0.1s}
+  .game-chip:nth-child(2){animation-delay:0.2s}
+  .game-chip:nth-child(3){animation-delay:0.3s}
+  @keyframes chipFade {
+    from{opacity:0;transform:translateY(10px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  .chip-icon { font-size: 20px; }
+  .chip-score {
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:17px;font-weight:900;color:#3edc7c;
+  }
+  .chip-name{font-size:10px;font-weight:600;color:var(--muted)}
+
+  .signup-card {
+    flex: 1;
+    background: var(--surface);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    padding: 28px 20px 52px;
+    position: relative;
+  }
+  .signup-card::before {
+    content:'';
+    position:absolute;top:10px;left:50%;
+    transform:translateX(-50%);
+    width:32px;height:4px;
+    background:var(--border);border-radius:2px;
+  }
+
+  .signup-eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(240,165,0,0.12);
+    border: 1px solid rgba(240,165,0,0.25);
+    border-radius: 20px; padding: 4px 12px;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .signup-eyebrow::before {
+    content:'';width:6px;height:6px;border-radius:50%;
+    background:var(--accent);
+    animation:pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+  .signup-heading {
+    font-size: clamp(30px, 9vw, 42px);
+    color: #fff; margin-bottom: 10px;
+  }
+  .signup-heading em { font-style:normal; color:var(--accent); }
+
+  .signup-subtext {
+    font-size: 14px; color: var(--muted);
+    line-height: 1.6; margin-bottom: 24px;
+  }
+
+  .perks { display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+  .perk {
+    display:flex; align-items:center; gap:12px;
+    font-size:14px; font-weight:500; color:var(--text);
+  }
+  .perk-icon {
+    width:34px;height:34px;border-radius:10px;
+    background:rgba(240,165,0,0.1);
+    border:1px solid rgba(240,165,0,0.2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;flex-shrink:0;
+  }
+
+  .btn-signup {
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;padding:16px 24px;
+    background:var(--accent);color:#000;
+    border:none;border-radius:14px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:18px;font-weight:900;letter-spacing:0.5px;
+    text-transform:uppercase;cursor:pointer;
+    transition:background 0.2s,transform 0.15s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .btn-signup:active{transform:scale(0.98);background:#ffc12e;}
+  .btn-arrow {
+    width:26px;height:26px;background:rgba(0,0,0,0.2);
+    border-radius:7px;display:flex;align-items:center;
+    justify-content:center;font-size:14px;
+  }
+
+  .signup-note {
+    text-align:center;margin-top:14px;
+    font-size:12px;color:var(--muted);
+  }
+  .signup-note a{color:var(--accent);}
+
+  .or-divider {
+    display:flex;align-items:center;gap:12px;
+    margin:20px 0;
+    font-size:11px;color:var(--muted);font-weight:600;
+    letter-spacing:0.5px;text-transform:uppercase;
+  }
+  .or-divider::before,.or-divider::after {
+    content:'';flex:1;height:1px;background:var(--border);
+  }
+
+  .social-row{display:flex;gap:10px;}
+  .btn-social {
+    flex:1;display:flex;align-items:center;justify-content:center;gap:7px;
+    padding:12px;
+    background:var(--surface2);border:1px solid var(--border);
+    border-radius:12px;font-size:13px;font-weight:600;color:var(--text);
+    cursor:pointer;transition:border-color 0.2s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .btn-social:active{border-color:var(--accent);}
+
+  .stats-strip {
+    display:flex;
+    margin-top:28px;
+    background:var(--surface2);
+    border:1px solid var(--border);
+    border-radius:14px;overflow:hidden;
+  }
+  .stat-cell {
+    flex:1;padding:14px 8px;text-align:center;
+    border-right:1px solid var(--border);
+  }
+  .stat-cell:last-child{border-right:none;}
+  .stat-num {
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:22px;font-weight:900;color:#fff;display:block;
+  }
+  .stat-lbl {
+    font-size:10px;font-weight:600;letter-spacing:0.5px;
+    text-transform:uppercase;color:var(--muted);
+    display:block;margin-top:2px;
+  }
+
+  /* ════════════════════════════════
+     MAIN SITE PAGE
+  ════════════════════════════════ */
+  #page-main{display:none;}
+
+  .main-nav {
+    position:sticky;top:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 16px;height:54px;
+    background:rgba(11,12,15,0.95);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-menu-btn {
+    width:36px;height:36px;background:var(--surface2);
+    border:1px solid var(--border);border-radius:8px;
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:4px;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .nav-menu-btn span{width:16px;height:2px;background:var(--text);border-radius:1px;}
+  .nav-search-btn {
+    width:36px;height:36px;background:var(--surface2);
+    border:1px solid var(--border);border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;font-size:16px;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  .ticker {
+    background:var(--accent);overflow:hidden;
+    white-space:nowrap;padding:8px 0;
+  }
+  .ticker-inner{
+    display:inline-flex;
+    animation:ticker 26s linear infinite;
+  }
+  @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .ticker-item {
+    display:inline-flex;align-items:center;gap:8px;
+    padding:0 20px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:12px;font-weight:800;letter-spacing:0.5px;
+    text-transform:uppercase;color:#000;
+  }
+  .ticker-item::after{content:'◆';font-size:7px;opacity:0.4;}
+
+  .main-hero {
+    position:relative;height:240px;overflow:hidden;
+    display:flex;align-items:flex-end;
+  }
+  .hero-bg {
+    position:absolute;inset:0;
+    background:
+      linear-gradient(to top,#0b0c0f 0%,transparent 55%),
+      linear-gradient(135deg,#0d1b2a,#1b2838,#0a1628);
+  }
+  .hero-content{position:relative;z-index:1;padding:0 20px 22px;}
+  .hero-tag {
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--accent);color:#000;
+    font-size:10px;font-weight:800;letter-spacing:1.5px;
+    text-transform:uppercase;padding:4px 10px;border-radius:4px;
+    margin-bottom:8px;
+  }
+  .hero-tag::before{
+    content:'';width:6px;height:6px;border-radius:50%;background:#000;
+    animation:pulse 1.4s ease-in-out infinite;
+  }
+  .hero-title{font-size:30px;color:#fff;margin-bottom:6px;}
+  .hero-title em{font-style:normal;color:var(--accent);}
+  .hero-meta{font-size:12px;color:var(--muted);}
+
+  .section{padding:24px 16px;}
+  .sec-header{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:14px;
+  }
+  .sec-title{font-size:20px;color:#fff;}
+  .sec-title span{color:var(--accent);}
+  .sec-link{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:0.5px;}
+
+  .cards-scroll {
+    display:flex;gap:12px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    padding-bottom:4px;
+    scrollbar-width:none;
+  }
+  .cards-scroll::-webkit-scrollbar{display:none;}
+
+  .snap-card {
+    flex-shrink:0;width:200px;
+    scroll-snap-align:start;
+    border-radius:12px;overflow:hidden;
+    background:var(--surface);
+    border:1px solid var(--border);
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .snap-card:active{border-color:var(--accent);}
+  .snap-card-img {
+    height:120px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:40px;
+  }
+  .snap-card-body{padding:12px;}
+  .snap-card-genre{
+    font-size:10px;font-weight:700;letter-spacing:1px;
+    text-transform:uppercase;color:var(--accent);margin-bottom:4px;
+  }
+  .snap-card-title{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:16px;font-weight:800;color:#fff;
+    line-height:1.2;margin-bottom:8px;
+  }
+  .snap-card-footer{
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:11px;color:var(--muted);
+  }
+  .score-badge {
+    display:inline-flex;align-items:center;justify-content:center;
+    width:30px;height:30px;border-radius:7px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:13px;font-weight:900;
+  }
+  .sg{background:#1a6e3a;color:#3edc7c;}
+  .sy{background:#4e5200;color:#c9cc00;}
+  .sr{background:#5c2d00;color:#f07020;}
+
+  .news-list{display:flex;flex-direction:column;}
+  .news-item {
+    display:flex;gap:12px;align-items:center;
+    padding:12px 0;
+    border-bottom:1px solid var(--border);
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .news-item:last-child{border-bottom:none;}
+  .news-thumb {
+    width:76px;height:52px;border-radius:8px;
+    flex-shrink:0;display:flex;align-items:center;
+    justify-content:center;font-size:24px;
+  }
+  .news-body{flex:1;min-width:0;}
+  .news-tag{
+    font-size:10px;font-weight:700;letter-spacing:1px;
+    text-transform:uppercase;color:var(--accent);margin-bottom:3px;
+  }
+  .news-title {
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:15px;font-weight:700;color:#fff;line-height:1.2;
+    display:-webkit-box;-webkit-line-clamp:2;
+    -webkit-box-orient:vertical;overflow:hidden;
+  }
+  .news-date{font-size:11px;color:var(--muted);margin-top:3px;}
+
+  .score-table{border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+  .score-row {
+    display:flex;align-items:center;gap:12px;
+    padding:12px 14px;
+    background:var(--surface);
+    border-bottom:1px solid var(--border);
+    cursor:pointer;-webkit-tap-highlight-color:transparent;
+  }
+  .score-row:last-child{border-bottom:none;}
+  .score-row:active{background:var(--surface2);}
+  .score-icon {
+    width:36px;height:36px;border-radius:8px;
+    flex-shrink:0;display:flex;align-items:center;
+    justify-content:center;font-size:18px;
+    background:var(--surface2);
+  }
+  .score-info{flex:1;min-width:0;}
+  .score-name{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:15px;font-weight:800;color:#fff;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .score-platform{font-size:11px;color:var(--muted);}
+  .score-right{text-align:right;flex-shrink:0;}
+  .score-num{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:22px;font-weight:900;
+  }
+  .verdict{
+    display:inline-block;padding:2px 8px;border-radius:20px;
+    font-size:10px;font-weight:700;margin-top:2px;
+  }
+  .v-must{background:rgba(62,220,124,0.15);color:#3edc7c;}
+  .v-great{background:rgba(62,220,124,0.1);color:#3edc7c;}
+  .v-good{background:rgba(201,204,0,0.15);color:#c9cc00;}
+  .v-skip{background:rgba(240,112,32,0.15);color:#f07020;}
+
+  .bottom-nav {
+    position:fixed;bottom:0;left:0;right:0;z-index:100;
+    background:rgba(19,21,26,0.97);
+    backdrop-filter:blur(16px);
+    border-top:1px solid var(--border);
+    display:flex;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  .bnav-item {
+    flex:1;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:3px;padding:9px 0;
+    font-size:10px;font-weight:600;color:var(--muted);
+    letter-spacing:0.3px;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    transition:color 0.15s;
+  }
+  .bnav-item.active{color:var(--accent);}
+  .bnav-icon{font-size:19px;}
+
+  .main-scroll-area{padding-bottom:78px;}
+
+  .newsletter-strip {
+    margin:0 16px 24px;
+    background:linear-gradient(135deg,var(--surface),var(--surface2));
+    border:1px solid var(--border);
+    border-radius:16px;padding:24px 18px;text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .newsletter-strip::before{
+    content:'';position:absolute;top:-40px;right:-40px;
+    width:140px;height:140px;border-radius:50%;
+    background:radial-gradient(circle,rgba(240,165,0,0.1),transparent 70%);
+  }
+  .newsletter-strip h3{font-size:22px;color:#fff;margin-bottom:6px;}
+  .newsletter-strip h3 em{font-style:normal;color:var(--accent);}
+  .newsletter-strip p{font-size:13px;color:var(--muted);margin-bottom:16px;}
+  .nl-form{display:flex;flex-direction:column;gap:8px;}
+  .nl-input{
+    background:var(--bg);border:1px solid var(--border);
+    border-radius:10px;padding:12px 14px;
+    color:var(--text);font-family:'Barlow',sans-serif;
+    font-size:14px;outline:none;width:100%;
+    transition:border-color 0.2s;
+  }
+  .nl-input:focus{border-color:var(--accent);}
+  .nl-input::placeholder{color:var(--muted);}
+  .btn-nl{
+    width:100%;padding:13px;
+    background:var(--accent);color:#000;border:none;
+    border-radius:10px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:16px;font-weight:900;text-transform:uppercase;
+    letter-spacing:0.5px;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .btn-nl:active{background:#ffc12e;}
+
+  /* gradient bg classes */
+  .gi-1{background:linear-gradient(135deg,#0d1b2a,#1b2838,#0a1628);}
+  .gi-2{background:linear-gradient(135deg,#1a0a2e,#2d1b4e,#0e0618);}
+  .gi-3{background:linear-gradient(135deg,#1a0808,#3d1515,#220a0a);}
+  .gi-4{background:linear-gradient(135deg,#0a1a0a,#153515,#081408);}
+  .gi-5{background:linear-gradient(135deg,#1a1208,#352a0a,#1a1002);}
+  .gi-6{background:linear-gradient(135deg,#08101a,#1a2e42,#06111e);}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     PAGE 1: SIGN UP (opens first)
+══════════════════════════════════════════ -->
+<div id="page-signup">
+
+  <div class="signup-topbar">
+    <div class="logo">HYPER<span>DROP</span></div>
+    <div class="topbar-link" id="skip-to-main">
+      Already a member? <b>Browse →</b>
+    </div>
+  </div>
+
+  <div class="signup-visual">
+    <div class="signup-visual-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="signup-chips">
+        <div class="game-chip">
+          <span class="chip-icon">🎮</span>
+          <div><div class="chip-score">9.8</div><div class="chip-name">Elden Ring</div></div>
+        </div>
+        <div class="game-chip">
+          <span class="chip-icon">🌿</span>
+          <div><div class="chip-score">9.5</div><div class="chip-name">Silksong</div></div>
+        </div>
+        <div class="game-chip">
+          <span class="chip-icon">🏙️</span>
+          <div><div class="chip-score">9.0</div><div class="chip-name">Civ VII</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="signup-card">
+
+    <div class="signup-eyebrow">Free Forever</div>
+
+    <h1 class="h-display signup-heading">
+      Your Gaming<br/><em>HQ Awaits.</em>
+    </h1>
+
+    <p class="signup-subtext">
+      Join 2.1M gamers getting unbiased reviews, breaking news,
+      and the best deals — all in one place.
+    </p>
+
+    <div class="perks">
+      <div class="perk">
+        <div class="perk-icon">⚡</div>
+        Breaking news before anyone else
+      </div>
+      <div class="perk">
+        <div class="perk-icon">🎯</div>
+        Honest scores you can actually trust
+      </div>
+      <div class="perk">
+        <div class="perk-icon">🔔</div>
+        Alerts for games on your wishlist
+      </div>
+      <div class="perk">
+        <div class="perk-icon">💸</div>
+        Exclusive deals & Game Pass drops
+      </div>
+    </div>
+
+    <!-- MAIN CTA -->
+    <button class="btn-signup" id="open-tally">
+      Create Free Account
+      <div class="btn-arrow">→</div>
+    </button>
+
+    <p class="signup-note">
+      No credit card &nbsp;·&nbsp; No spam &nbsp;·&nbsp;
+      <a href="#">Privacy Policy</a>
+    </p>
+
+    <div class="stats-strip">
+      <div class="stat-cell">
+        <span class="stat-num">4.2K+</span>
+        <span class="stat-lbl">Reviews</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">2.1M</span>
+        <span class="stat-lbl">Readers</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">18K</span>
+        <span class="stat-lbl">Games</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 2: MAIN SITE
+══════════════════════════════════════════ -->
+<div id
