@@ -8,10 +8,10 @@
 
 <!-- ============================================================
      SIGN UP LINK — EDIT HERE
-     Paste your link between the quotes below
+     Replace  add_your_link  with your actual link
      ============================================================ -->
 <script>
-  var signupLink = "https://tally.so/r/eqLyxQ";
+  var signupLink = "";
 </script>
 <!-- ============================================================ -->
 
@@ -515,7 +515,77 @@
   }
   .btn-nl:active{background:#ffc12e;}
 
-  /* gradient bg classes */
+  /* ── IFRAME MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(6px);
+    flex-direction: column;
+    align-items: center; justify-content: flex-end;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal-sheet {
+    width: 100%; height: 90dvh;
+    background: var(--surface);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    animation: sheetUp 0.3s ease;
+  }
+  @keyframes sheetUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+
+  .modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .modal-handle {
+    width: 36px; height: 4px;
+    background: var(--border); border-radius: 2px;
+    position: absolute; top: 10px; left: 50%;
+    transform: translateX(-50%);
+  }
+  .modal-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; font-weight: 800; color: #fff;
+    letter-spacing: 0.5px;
+  }
+  .modal-close {
+    width: 32px; height: 32px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; display: flex; align-items: center;
+    justify-content: center; cursor: pointer; font-size: 16px; color: var(--muted);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .modal-close:active { background: var(--border); }
+
+  .modal-iframe {
+    flex: 1; width: 100%; border: none;
+    background: #fff;
+  }
+
+  .modal-loading {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 12px; color: var(--muted); font-size: 13px;
+  }
+  .spinner {
+    width: 28px; height: 28px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
   .gi-1{background:linear-gradient(135deg,#0d1b2a,#1b2838,#0a1628);}
   .gi-2{background:linear-gradient(135deg,#1a0a2e,#2d1b4e,#0e0618);}
   .gi-3{background:linear-gradient(135deg,#1a0808,#3d1515,#220a0a);}
@@ -624,4 +694,363 @@
 <!-- ══════════════════════════════════════════
      PAGE 2: MAIN SITE
 ══════════════════════════════════════════ -->
-<div id
+<div id="page-main">
+
+  <nav class="main-nav">
+    <div class="nav-menu-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="logo" style="font-size:20px;">HYPER<span>DROP</span></div>
+    <div class="nav-search-btn" aria-label="Search">🔍</div>
+  </nav>
+
+  <div class="main-scroll-area">
+
+    <div class="ticker">
+      <div class="ticker-inner">
+        <span class="ticker-item">🔥 Elden Ring DLC Announced</span>
+        <span class="ticker-item">GTA VI Release Window Confirmed</span>
+        <span class="ticker-item">💀 Silksong Final Verdict Is In</span>
+        <span class="ticker-item">Xbox Game Pass 15 New April Titles</span>
+        <span class="ticker-item">⚡ PS5 Pro Review — Worth It?</span>
+        <span class="ticker-item">Nintendo Switch 2 Pre-Orders Open</span>
+        <span class="ticker-item">🔥 Elden Ring DLC Announced</span>
+        <span class="ticker-item">GTA VI Release Window Confirmed</span>
+        <span class="ticker-item">💀 Silksong Final Verdict Is In</span>
+        <span class="ticker-item">Xbox Game Pass 15 New April Titles</span>
+        <span class="ticker-item">⚡ PS5 Pro Review — Worth It?</span>
+        <span class="ticker-item">Nintendo Switch 2 Pre-Orders Open</span>
+      </div>
+    </div>
+
+    <div class="main-hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-tag">Editor's Pick</div>
+        <h1 class="h-display hero-title">The <em>Drop</em> is Here.</h1>
+        <p class="hero-meta">Game news & reviews — updated daily</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-header">
+        <div class="h-label sec-title">Featured <span>Reviews</span></div>
+        <span class="sec-link">All →</span>
+      </div>
+      <div class="cards-scroll">
+        <div class="snap-card">
+          <div class="snap-card-img gi-1">🎮</div>
+          <div class="snap-card-body">
+            <div class="snap-card-genre">Action RPG</div>
+            <div class="snap-card-title">Elden Ring: Shadow of the Erdtree</div>
+            <div class="snap-card-footer">
+              <span>PC · PS5</span>
+              <div class="score-badge sg">9.8</div>
+            </div>
+          </div>
+        </div>
+        <div class="snap-card">
+          <div class="snap-card-img gi-4">🌿</div>
+          <div class="snap-card-body">
+            <div class="snap-card-genre">Indie</div>
+            <div class="snap-card-title">Hollow Knight: Silksong</div>
+            <div class="snap-card-footer">
+              <span>All Platforms</span>
+              <div class="score-badge sg">9.5</div>
+            </div>
+          </div>
+        </div>
+        <div class="snap-card">
+          <div class="snap-card-img gi-6">🏙️</div>
+          <div class="snap-card-body">
+            <div class="snap-card-genre">Strategy</div>
+            <div class="snap-card-title">Civilization VII</div>
+            <div class="snap-card-footer">
+              <span>PC</span>
+              <div class="score-badge sg">9.0</div>
+            </div>
+          </div>
+        </div>
+        <div class="snap-card">
+          <div class="snap-card-img gi-2">👻</div>
+          <div class="snap-card-body">
+            <div class="snap-card-genre">Horror</div>
+            <div class="snap-card-title">Silent Hill f</div>
+            <div class="snap-card-footer">
+              <span>PS5 · PC</span>
+              <div class="score-badge sy">7.8</div>
+            </div>
+          </div>
+        </div>
+        <div class="snap-card">
+          <div class="snap-card-img gi-5">🔫</div>
+          <div class="snap-card-body">
+            <div class="snap-card-genre">Battle Royale</div>
+            <div class="snap-card-title">Hyper Strike: Reloaded</div>
+            <div class="snap-card-footer">
+              <span>All Platforms</span>
+              <div class="score-badge sr">6.4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" style="padding-top:0;">
+      <div class="sec-header">
+        <div class="h-label sec-title">Latest <span>News</span></div>
+        <span class="sec-link">All →</span>
+      </div>
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-thumb gi-2">🌌</div>
+          <div class="news-body">
+            <div class="news-tag">Industry</div>
+            <div class="news-title">GTA VI Map Reportedly 3× Bigger Than GTA V</div>
+            <div class="news-date">2 hours ago</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-thumb gi-5">⚙️</div>
+          <div class="news-body">
+            <div class="news-tag">Hardware</div>
+            <div class="news-title">NVIDIA RTX 5090 Ti Benchmarks Are Absolutely Insane</div>
+            <div class="news-date">5 hours ago</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-thumb gi-3">🏆</div>
+          <div class="news-body">
+            <div class="news-tag">Esports</div>
+            <div class="news-title">Faker Claims Record 5th World Championship Title</div>
+            <div class="news-date">Yesterday</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-thumb gi-4">🌍</div>
+          <div class="news-body">
+            <div class="news-tag">Update</div>
+            <div class="news-title">Minecraft 1.22 "Overgrowth" Adds New Biomes</div>
+            <div class="news-date">Yesterday</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-thumb gi-1">🎁</div>
+          <div class="news-body">
+            <div class="news-tag">Deals</div>
+            <div class="news-title">Xbox Game Pass — 50 New Games Added for April 2026</div>
+            <div class="news-date">2 days ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" style="padding-top:0;">
+      <div class="sec-header">
+        <div class="h-label sec-title">Score <span>Board</span></div>
+        <span class="sec-link">Full List →</span>
+      </div>
+      <div class="score-table">
+        <div class="score-row">
+          <div class="score-icon gi-1">🎮</div>
+          <div class="score-info">
+            <div class="score-name">Elden Ring: SotE</div>
+            <div class="score-platform">PC · PS5 · Xbox</div>
+          </div>
+          <div class="score-right">
+            <div class="score-num" style="color:#3edc7c;">9.8</div>
+            <span class="verdict v-must">Must Play</span>
+          </div>
+        </div>
+        <div class="score-row">
+          <div class="score-icon gi-6">🏙️</div>
+          <div class="score-info">
+            <div class="score-name">Civilization VII</div>
+            <div class="score-platform">PC</div>
+          </div>
+          <div class="score-right">
+            <div class="score-num" style="color:#3edc7c;">9.0</div>
+            <span class="verdict v-great">Great</span>
+          </div>
+        </div>
+        <div class="score-row">
+          <div class="score-icon gi-2">👻</div>
+          <div class="score-info">
+            <div class="score-name">Silent Hill f</div>
+            <div class="score-platform">PS5 · PC</div>
+          </div>
+          <div class="score-right">
+            <div class="score-num" style="color:#c9cc00;">7.8</div>
+            <span class="verdict v-good">Good</span>
+          </div>
+        </div>
+        <div class="score-row">
+          <div class="score-icon gi-3">🐉</div>
+          <div class="score-info">
+            <div class="score-name">Dragon's Dogma 3</div>
+            <div class="score-platform">PS5 · PC</div>
+          </div>
+          <div class="score-right">
+            <div class="score-num" style="color:#3edc7c;">8.7</div>
+            <span class="verdict v-great">Great</span>
+          </div>
+        </div>
+        <div class="score-row">
+          <div class="score-icon gi-5">🔫</div>
+          <div class="score-info">
+            <div class="score-name">Hyper Strike: Reload</div>
+            <div class="score-platform">All Platforms</div>
+          </div>
+          <div class="score-right">
+            <div class="score-num" style="color:#f07020;">6.4</div>
+            <span class="verdict v-skip">Skip</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="newsletter-strip">
+      <h3 class="h-display">Stay <em>Ahead</em> of the Drop.</h3>
+      <p>Best reviews & deals every Friday. No spam.</p>
+      <div class="nl-form">
+        <input class="nl-input" type="email" placeholder="your@email.com"/>
+        <button class="btn-nl">Subscribe Free →</button>
+      </div>
+    </div>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <div class="bnav-item active">
+      <span class="bnav-icon">🏠</span>Home
+    </div>
+    <div class="bnav-item">
+      <span class="bnav-icon">⭐</span>Reviews
+    </div>
+    <div class="bnav-item">
+      <span class="bnav-icon">📰</span>News
+    </div>
+    <div class="bnav-item">
+      <span class="bnav-icon">🔥</span>Trending
+    </div>
+    <div class="bnav-item" id="profile-btn">
+      <span class="bnav-icon">👤</span>Profile
+    </div>
+  </nav>
+
+</div>
+
+
+<!-- ── IFRAME MODAL ── -->
+<div id="form-modal" style="
+  display:none;position:fixed;inset:0;z-index:999;
+  background:rgba(0,0,0,0.85);
+  align-items:flex-end;justify-content:center;
+">
+  <div style="
+    background:#13151a;
+    border-top-left-radius:20px;border-top-right-radius:20px;
+    width:100%;max-width:560px;
+    height:90dvh;
+    display:flex;flex-direction:column;
+    overflow:hidden;
+  ">
+    <!-- handle -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid #252830;flex-shrink:0;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:#fff;">🎮 Create Free Account</div>
+      <div id="modal-close" style="
+        width:32px;height:32px;background:#1c1f27;
+        border:1px solid #252830;border-radius:8px;
+        display:flex;align-items:center;justify-content:center;
+        font-size:14px;cursor:pointer;color:#7a7f91;
+      ">✕</div>
+    </div>
+    <!-- loading -->
+    <div id="modal-loading" style="
+      position:absolute;top:60px;left:0;right:0;bottom:0;
+      display:flex;flex-direction:column;align-items:center;
+      justify-content:center;gap:14px;
+      background:#13151a;z-index:1;
+      font-size:13px;color:#7a7f91;
+    ">
+      <div style="
+        width:28px;height:28px;border-radius:50%;
+        border:3px solid #252830;border-top-color:#f0a500;
+        animation:spin 0.8s linear infinite;
+      "></div>
+      Loading form…
+    </div>
+    <iframe
+      id="form-iframe"
+      src=""
+      style="flex:1;border:none;width:100%;"
+      allow="camera;microphone"
+      onload="document.getElementById('modal-loading').style.display='none';"
+    ></iframe>
+  </div>
+</div>
+
+<style>
+  @keyframes spin{to{transform:rotate(360deg)}}
+</style>
+
+<script>
+  // ── Build final link with Facebook tracking ──────────────────
+  function buildLink() {
+    var base = signupLink;
+    if (!base || base === "add_your_link") return "";
+    var sep = base.indexOf('?') !== -1 ? '&' : '?';
+    return base + sep + "utm_source=facebook&utm_medium=social&utm_campaign=hyperdrop";
+  }
+
+  // ── Open form inside modal ───────────────────────────────────
+  function openSignup() {
+    var link = buildLink();
+    if (!link) { alert("Please add your signup link first."); return; }
+    var modal = document.getElementById('form-modal');
+    document.getElementById('form-iframe').src = link;
+    document.getElementById('modal-loading').style.display = 'flex';
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('form-modal').style.display = 'none';
+    document.getElementById('form-iframe').src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('open-tally').addEventListener('click', openSignup);
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+
+  // Close if user taps the dark backdrop
+  document.getElementById('form-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // ── Page switch helpers ──────────────────────────────────────
+  function showMain() {
+    document.getElementById('page-signup').style.display = 'none';
+    document.getElementById('page-main').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+  function showSignup() {
+    document.getElementById('page-main').style.display = 'none';
+    document.getElementById('page-signup').style.display = 'flex';
+    window.scrollTo(0, 0);
+  }
+
+  document.getElementById('skip-to-main').addEventListener('click', showMain);
+  document.getElementById('profile-btn').addEventListener('click', showSignup);
+
+  // ── Bottom nav active state ──────────────────────────────────
+  document.querySelectorAll('.bnav-item').forEach(item => {
+    item.addEventListener('click', function () {
+      document.querySelectorAll('.bnav-item').forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
